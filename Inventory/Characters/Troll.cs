@@ -1,4 +1,5 @@
 ﻿using Inventory.Core;
+using Inventory.IItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,9 @@ namespace Inventory.Characters
         }
         public bool Steal(ICharacters target)
         {
-            // Simple steal logic based on luck
+   
             Random rand = new Random();
-            bool success = rand.NextDouble() < (Luck / 100.0);
+            bool success = rand.Next(0, 100) < Luck;
 
             if (success && target.Inventory.Any())
             {
@@ -44,6 +45,27 @@ namespace Inventory.Characters
 
             return success;
         }
+        public bool Trade(ICharacters target, ISomeitems myItem, ISomeitems targetItem)
+        {
+            if (Inventory.Contains(myItem) && target.Inventory.Contains(targetItem))
+            {
+             
+                Inventory.Remove(myItem);
+                target.Inventory.Remove(targetItem);
+
+                Inventory.Add(targetItem);
+                target.Inventory.Add(myItem);
+
+                Console.WriteLine($"{Name} обменял {myItem.Title} на {targetItem.Title} с {target.Name}.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Обмен не удался: один из предметов отсутствует в инвентаре.");
+                return false;
+            }
+        }
+
 
     }
 }
