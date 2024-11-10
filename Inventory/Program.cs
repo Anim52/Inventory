@@ -9,8 +9,10 @@ namespace Inventory
         static void Main(string[] args)
         {
             Artifact artifact = new Artifact() {Title = "Мефедрон", rarities = Rarities.Legend};
-            
-            Human human = new Human() {Name = "Bob", Damage = 12, Health = 100, Invento};
+            Human human = new Human() {Name = "Bob", Damage = 12, Health = 100};
+            human.Inventory.Add(artifact);
+
+            human.ShowInventory();
         }
     }
 }

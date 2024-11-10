@@ -13,7 +13,7 @@ namespace Inventory.Characters
         public int Health { get; set; }
         public float Luck { get; set; }
         public int Damage { get; set; }
-        public ICollection<ISomeitems> Inventory { get; set; }
+        public ICollection<ISomeitems> Inventory { get; set; } = new List<ISomeitems>();
     
     }
 }

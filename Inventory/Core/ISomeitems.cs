@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.Core
 {
-    public enum Rarities {Common,Umcommon,Rare,Epic,Legend}
+    public enum Rarities {Common,Uncommon,Rare,Epic,Legend}
     internal interface ISomeitems
     {
         public string Title { get; set; }
@@ -14,25 +14,25 @@ namespace Inventory.Core
 
         void Info()
         {
-            if(rarities == Rarities.Common)
+            switch (rarities)
             {
-                Console.BackgroundColor = ConsoleColor.White;
-            }
-            if(rarities == Rarities.Umcommon)
-            {
-                Console.BackgroundColor = ConsoleColor.Green;
-            }
-            if(rarities == Rarities.Rare)
-            {
-                Console.BackgroundColor = ConsoleColor.Blue;
-            }
-            if(rarities == Rarities.Epic)
-            {
-                Console.BackgroundColor = ConsoleColor.Magenta;
-            }
-            if (rarities == Rarities.Legend)
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
+                case Rarities.Common:
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+                case Rarities.Uncommon:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    break;
+                case Rarities.Rare:
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    break;
+                case Rarities.Epic:
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                    break;
+                case Rarities.Legend:
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
             }
 
             Console.WriteLine($"Предмет:{Title} редкость:{rarities}");
