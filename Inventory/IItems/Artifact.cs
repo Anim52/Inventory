@@ -33,12 +33,12 @@ namespace Inventory.IItems
                     break;
                 case Rarities.Legend:
                     Console.ForegroundColor = ConsoleColor.Red;
-                  
+                    
                     break;
             }
 
             Console.WriteLine($"Предмет: {Title}, редкость: {rarity}");
-            Console.ResetColor(); 
+            Console.ResetColor();
           
         }
     }
