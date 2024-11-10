@@ -21,6 +21,7 @@ namespace Inventory
 
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("Добро пожаловать!");
                 Console.WriteLine("Желаете просмотреть предметы?");
                 Console.WriteLine("Да или Нет?");
@@ -62,6 +63,7 @@ namespace Inventory
                 }
                 else if (check == "нет")
                 {
+                    Console.Clear();
                     Console.WriteLine("Желаете просмотреть инвентари персонажей?");
                     Console.WriteLine("Напишите Да, если согласны, или Нет, если не согласны.");
 
@@ -102,7 +104,53 @@ namespace Inventory
                     }
                     else if (yesOrNo == "нет")
                     {
-                        break; // Завершение работы программы
+                        while (true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Желаете провести кражу или обмен?");
+                            Console.WriteLine("Введите 'Обмен' для обмена предметами или 'Кража' для кражи.");
+                            Console.WriteLine("Введите 'Назад' для возврата в главное меню.");
+
+                            string action = Console.ReadLine()?.Trim().ToLower();
+
+                            if (action == "обмен")
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Человек и Тролль обмениваются предметами...");
+
+                                // Проводим обмен между человеком и троллем
+                                if (human.Inventory.Contains(artifact) && troll.Inventory.Contains(potion))
+                                {
+                                    human.Trade(troll, artifact, potion);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Обмен не удался: один из предметов отсутствует.");
+                                }
+
+                                Console.WriteLine("Нажмите любую клавишу для продолжения...");
+                                Console.ReadKey();
+                            }
+                            else if (action == "кража")
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Оборотень пытается украсть предмет у Тролля...");
+
+                                // Оборотень пытается украсть предмет у тролля
+                                warevolf.Steal(troll);
+
+                                Console.WriteLine("Нажмите любую клавишу для продолжения...");
+                                Console.ReadKey();
+                            }
+                            else if (action == "назад")
+                            {
+                                break; // Выход в главное меню
+                            }
+                            else
+                            {
+                                Console.WriteLine("Неверный ввод. Пожалуйста, выберите 'Обмен', 'Кража' или 'Назад'.");
+                            }
+                        }
                     }
                 }
             }
