@@ -10,6 +10,6 @@ namespace Inventory.IItems
     internal class Potion : ISomeitems
     {
         public string Title { get; set; }
-        public Rarities rarities { get; set; }
+        public Rarities rarity { get; set; }
     }
 }

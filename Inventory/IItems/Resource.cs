@@ -10,6 +10,6 @@ namespace Inventory.IItems
     internal class Resource : ISomeitems
     {
         public string Title { get ; set ; }
-        public Rarities rarities { get ; set ; }
+        public Rarities rarity { get ; set ; }
     }
 }
